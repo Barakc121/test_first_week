@@ -11,25 +11,12 @@ CARD_VALUES = {
 
 def create_card(rank: str, suite: str) -> dict:
   
-    value = CARD_VALUES.get(rank, 0)
+    value = CARD_VALUES.get(rank)
     return {
         "rank": rank,
         "suite": suite,
         "value": value
     }
-
-
-def compare_cards(p1_card: dict, p2_card: dict) -> str:
-    p1_value = p1_card.get("value', 0)
-    p2_value = p2_card.get("value", 0)
-
-    if p1_value > p2_value:
-        return "P1"
-    elif p2_value > p1_value:
-        return "P2"
-    else:
-        return "TIE"
-
 
 def create_deck() -> List[Dict]:
     
@@ -39,6 +26,19 @@ def create_deck() -> List[Dict]:
             card = create_card(rank, suite)
             deck.append(card)
     return deck
+
+def compare_cards(p1_card: dict, p2_card: dict) -> str:
+    p1_value = p1_card.get("value")
+    p2_value = p2_card.get("value")
+
+    if p1_value > p2_value:
+        return "P1"
+    elif p2_value > p1_value:
+        return "P2"
+    else:
+        return "TIE"
+
+
 
 
 def shuffle(deck: List[Dict]) -> List[Dict]:
